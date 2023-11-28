@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <div class="p-3 mb-2 bg-secondary-subtle text-emphasis-secondary">.<h1>Shapley value analyser</h1></div>
+    <p class="lead">
+      This is a web application to analyze features' importance in linear regression based on Shapley value
+    </p>
+    <form id="init_form" action = "{{ url_for('start_website') }}" method="POST">
+      <div class="col">
+        <label for="r_seed_DGP" class="form-label">Random seed for data</label>
+        <input type="number" class="form-control" id="r_seed_DGP" name = "r_seed_DGP" min =0 value=1234>
+      </div>
+      <div class = "row">
+        <div class = "col"><label class="form-label">Feature Name</label></div>
+        <div class = "col"><label class="form-label">Select distribution</label></div>
+        <div class = "col"><label class="form-label">Select min value if Unifrom or avg if Normal</label></div>
+        <div class = "col"><label class="form-label">Select max value if Unifrom or var if Normal</label></div>
+      </div>
+      <div class = "row">
+        <div class = "col"><label class="form-label">x1</label></div>
+        <div class = "col"><select class="form-control" id="x1_dist" name="x1_dist" value ="Normal Distribution">
+          <option value="Norm_dist">Normal Distribution</option>
+          <option value="Uni_dist">Uniform Distribution</option>
+        </select></div>
+        <div class = "col"><input type="number" class="form-control" id="x1_min_avg" name = "x1_min_avg" value = 0></div>
+        <div class = "col"><input type="number" class="form-control" id="x1_max_var" name = "x1_max_var" value = 1></div>
+      </div>
+
+      <div class = "row">
+        <div class = "col"><label class="form-label">x2</label></div>
+        <div class = "col"><select class="form-control" id="x2_dist" name="x2_dist" value ="Normal Distribution">
+          <option value="Norm_dist">Normal Distribution</option>
+          <option value="Uni_dist">Uniform Distribution</option>
+        </select></div>
+        <div class = "col"><input type="number" class="form-control" id="x2_min_avg" name = "x2_min_avg" value = 0></div>
+        <div class = "col"><input type="number" class="form-control" id="x2_max_var" name = "x2_max_var" value =1 ></div>
+      </div>
+
+      <div class = "row">
+        <div class = "col"><label class="form-label">x3</label></div>
+        <div class = "col"><select class="form-control" id="x3_dist" name="x3_dist" value ="Normal Distribution">
+          <option value="Norm_dist">Normal Distribution</option>
+          <option value="Uni_dist">Uniform Distribution</option>
+        </select></div>  
+        <div class = "col"><input type="number" class="form-control" id="x3_min_avg" name = "x3_min_avg" value = 0></div>
+        <div class = "col"><input type="number" class="form-control" id="x3_max_var" name = "x3_max_var" value = 1></div>      
+      </div>      
+
+      <div class = "row">
+        <div class = "col"><label class="form-label">x4</label></div>
+        <div class = "col"><select class="form-control" id="x4_dist" name="x4_dist" value ="Normal Distribution">
+          <option value="Norm_dist">Normal Distribution</option>
+          <option value="Uni_dist">Uniform Distribution</option>
+        </select></div>  
+        <div class = "col"><input type="number" class="form-control" id="x4_min_avg" name = "x4_min_avg" value =0></div>
+        <div class = "col"><input type="number" class="form-control" id="x4_max_var" name = "x4_max_var" value =1></div>      
+      </div>
+
+      <div class = "row">
+        <div class = "col"><label class="form-label">x5</label></div>
+        <div class = "col"><select class="form-control" id="x5_dist" name="x5_dist" value ="Normal Distribution">
+          <option value="Norm_dist">Normal Distribution</option>
+          <option value="Uni_dist">Uniform Distribution</option>
+        </select></div>  
+        <div class = "col"><input type="number" class="form-control" id="x5_min_avg" name = "x5_min_avg" value = 0></div>
+        <div class = "col"><input type="number" class="form-control" id="x5_max_var" name = "x5_max_var" value = 1></div>      
+      </div>
+
+      <div class = "row">
+        <div class = "col"><label class="form-label">x6</label></div>
+        <div class = "col"><select class="form-control" id="x6_dist" name="x6_dist" value ="Normal Distribution">
+          <option value="Norm_dist">Normal Distribution</option>
+          <option value="Uni_dist">Uniform Distribution</option>
+        </select></div>       
+        <div class = "col"><input type="number" class="form-control" id="x6_min_avg" name = "x6_min_avg" value = 0></div> 
+        <div class = "col"><input type="number" class="form-control" id="x6_max_var" name = "x6_max_var" value = 1></div>
+      </div>    
+
+      <div class = "row">
+        <div class = "col"><label class="form-label">Features to be correlated</label></div>
+        <div class = "col"><select class="form-control" id="corr_feat_1" name="corr_feat_1">
+          <option value="x1_corr">x1</option>
+          <option value="x2_corr">x2</option>
+          <option value="x3_corr">x3</option>
+          <option value="x4_corr">x4</option>
+          <option value="x5_corr">x5</option>
+          <option value="x6_corr">x6</option>
+        </select></div>
+        <div class = "col"><select class="form-control" id="corr_feat_2" name="corr_feat_2">
+          <option value="x1_corr">x1</option>
+          <option value="x2_corr">x2</option>
+          <option value="x3_corr">x3</option>
+          <option value="x4_corr">x4</option>
+          <option value="x5_corr">x5</option>
+          <option value="x6_corr">x6</option>
+        </select></div>
+        <div class = "col"><select class="form-control" id="corr_type" name="corr_type">
+          <option value="linear">linear</option>
+          <option value="quadr">quadr</option>
+          <option value="other">other</option>
+        </select></div>
+
+      </div>
+          
+
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Next</button>
+      </div>
+    </form>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
