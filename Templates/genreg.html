@@ -12,6 +12,118 @@
       This is a web application to analyze features' importance in linear regression based on Shapley value
     </p>
 
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">x1</th>
+          <th scope="col">x2</th>
+          <th scope="col">x3</th>
+          <th scope="col">x4</th>
+          <th scope="col">x5</th>
+          <th scope="col">x6</th>
+          <th scope="col">y</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Mean</th>
+          <td>{{"%.3f"|format(X1.mean)}}</td>
+          <td>{{"%.3f"|format(X2.mean)}}</td>
+          <td>{{"%.3f"|format(X3.mean)}}</td>
+          <td>{{"%.3f"|format(X4.mean)}}</td>
+          <td>{{"%.3f"|format(X5.mean)}}</td>
+          <td>{{"%.3f"|format(X6.mean)}}</td>
+          <td>{{"%.3f"|format(y.mean)}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Std Dev</th>
+          <td>{{"%.4f"|format(X1.std)}}</td>
+          <td>{{"%.4f"|format(X2.std)}}</td>
+          <td>{{"%.4f"|format(X3.std)}}</td>
+          <td>{{"%.4f"|format(X4.std)}}</td>
+          <td>{{"%.4f"|format(X5.std)}}</td>
+          <td>{{"%.4f"|format(X6.std)}}</td>
+          <td>{{"%.3f"|format(y.std)}}</td>
+        </tr>
+        <tr>
+          <th scope="row">min</th>
+          <td>{{"%.3f"|format(X1.min)}}</td>
+          <td>{{"%.3f"|format(X2.min)}}</td>
+          <td>{{"%.3f"|format(X3.min)}}</td>
+          <td>{{"%.3f"|format(X4.min)}}</td>
+          <td>{{"%.3f"|format(X5.min)}}</td>
+          <td>{{"%.3f"|format(X6.min)}}</td>
+          <td>{{"%.3f"|format(y.min)}}</td>
+        </tr>
+        <tr>
+          <th scope="row">25%</th>
+          <td>{{"%.3f"|format(X1.q1)}}</td>
+          <td>{{"%.3f"|format(X2.q1)}}</td>
+          <td>{{"%.3f"|format(X3.q1)}}</td>
+          <td>{{"%.3f"|format(X4.q1)}}</td>
+          <td>{{"%.3f"|format(X5.q1)}}</td>
+          <td>{{"%.3f"|format(X6.q1)}}</td>
+          <td>{{"%.3f"|format(y.q1)}}</td>
+        </tr>
+        <tr>
+          <th scope="row">50%</th>
+          <td>{{"%.3f"|format(X1.q2)}}</td>
+          <td>{{"%.3f"|format(X2.q2)}}</td>
+          <td>{{"%.3f"|format(X3.q2)}}</td>
+          <td>{{"%.3f"|format(X4.q2)}}</td>
+          <td>{{"%.3f"|format(X5.q2)}}</td>
+          <td>{{"%.3f"|format(X6.q2)}}</td>
+          <td>{{"%.3f"|format(y.q2)}}</td>
+        </tr>
+        <tr>
+          <th scope="row">75%</th>
+          <td>{{"%.3f"|format(X1.q3)}}</td>
+          <td>{{"%.3f"|format(X2.q3)}}</td>
+          <td>{{"%.3f"|format(X3.q3)}}</td>
+          <td>{{"%.3f"|format(X4.q3)}}</td>
+          <td>{{"%.3f"|format(X5.q3)}}</td>
+          <td>{{"%.3f"|format(X6.q3)}}</td>
+          <td>{{"%.3f"|format(y.q3)}}</td>
+        </tr>
+        <tr>
+          <th scope="row">max</th>
+          <td>{{"%.3f"|format(X1.max)}}</td>
+          <td>{{"%.3f"|format(X2.max)}}</td>
+          <td>{{"%.3f"|format(X3.max)}}</td>
+          <td>{{"%.3f"|format(X4.max)}}</td>
+          <td>{{"%.3f"|format(X5.max)}}</td>
+          <td>{{"%.3f"|format(X6.max)}}</td>
+          <td>{{"%.3f"|format(y.max)}}</td>
+        </tr>
+        <tr>
+          <th scope="row">N</th>
+          <td>{{X1.N}}</td>
+          <td>{{X2.N}}</td>
+          <td>{{X3.N}}</td>
+          <td>{{X4.N}}</td>
+          <td>{{X5.N}}</td>
+          <td>{{X6.N}}</td>
+          <td>{{y.N}}</td>
+          
+        </tr>
+        <tr>
+          <th scope="row">plot</th>
+          <td><img src="./static/images/dist_x1.png" alt="Box plot for X1"></td>
+          <td><img src="./static/images/dist_x2.png"  alt="Box plot for X2"></td>
+          <td><img src="./static/images/dist_x3.png"  alt="Box plot for X3"></td>
+          <td><img src="./static/images/dist_x4.png"  alt="Box plot for X4"></td>
+          <td><img src="./static/images/dist_x5.png" alt="Box plot for X5"></td>
+          <td><img src="./static/images/dist_x6.png"  alt="Box plot for X5"></td>
+          <td><img src="./static/images/dist_y.png" alt="Box plot for y"></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+
 
 
 
